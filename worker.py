@@ -4,26 +4,21 @@ from flask import render_template
 import requests
 import os
 import json
-from google.cloud import secretmanager_v1
+from google.cloud import secretmanager
 app = Flask(__name__)
 
-def get_api_key() -> str:
-    # secret = os.environ.get("compute-api-key")
-    project_id = "neat-airport-400410"
-    secret_id = "compute-api-key"
-    
-    client = secretmanager_v1.SecretManagerServiceClient()
-    
-    name = f"projects/{project_id}/secrets/{secret_id}/versions/latest"
+def access_secret_version(secret_id, version_id="latest"):
+    # Create the Secret Manager client.
+    client = secretmanager.SecretManagerServiceClient()
+
+    # Build the resource name of the secret version.
+    name = f"projects/973957579584/secrets/{secret_id}/versions/{version_id}"
+
+    # Access the secret version.
     response = client.access_secret_version(name=name)
-    
-    return response.payload.data.decode("UTF-8")
-    # if secret:
-    #     return secret
-    # else:
-    #     #local testing
-    #     with open('.key') as f:
-    #         return f.read()
+
+    # Return the decoded payload.
+    return response.payload.data.decode('UTF-8')
       
 @app.route("/")
 def hello():
@@ -32,14 +27,14 @@ def hello():
 @app.route("/test")
 def test():
     #return "Test" # testing 
-    return(get_api_key())
+    return(access_secret_version("compute-api-key"))
 
 @app.route("/add",methods=['GET','POST'])
 def add():
   if request.method=='GET':
     return "Use post to add" # replace with form template
   else:
-    token=get_api_key()
+    token=access_secret_version("compute-api-key")
     ret = addWorker(token,request.form['num'])
     return ret
 
