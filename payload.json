@@ -9,12 +9,13 @@
     {
       "autoDelete": true,
       "boot": true,
-      "deviceName": "spark-master",
+      "deviceName": "sparkmaster",
+      "diskEncryptionKey": {},
       "initializeParams": {
-        "diskSizeGb": "10",
+        "diskSizeGb": "15",
         "diskType": "projects/neat-airport-400410/zones/europe-west1-b/diskTypes/pd-standard",
         "labels": {},
-        "sourceImage": "projects/debian-cloud/global/images/debian-11-bullseye-v20231115"
+        "sourceImage": "projects/ubuntu-os-cloud/global/images/ubuntu-2204-jammy-v20231201"
       },
       "mode": "READ_WRITE",
       "type": "PERSISTENT"
@@ -33,7 +34,7 @@
   "metadata": {
     "items": []
   },
-  "name": "spark-master",
+  "name": "sparkmaster",
   "networkInterfaces": [
     {
       "accessConfigs": [
