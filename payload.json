@@ -12,9 +12,9 @@
       "deviceName": "slave1",
       "initializeParams": {
         "diskSizeGb": "10",
-        "diskType": "projects/neat-airport-400410/zones/us-west4-b/diskTypes/pd-balanced",
+        "diskType": "projects/neat-airport-400410/zones/europe-west1-b/diskTypes/pd-balanced",
         "labels": {},
-        "sourceImage": "projects/debian-cloud/global/images/debian-11-bullseye-v20231115"
+        "sourceImage": "projects/ubuntu-os-cloud/global/images/ubuntu-2204-jammny-v20231201"
       },
       "mode": "READ_WRITE",
       "type": "PERSISTENT"
@@ -29,7 +29,7 @@
   "labels": {
     "goog-ec-src": "vm_add-rest"
   },
-  "machineType": "projects/neat-airport-400410/zones/us-west4-b/machineTypes/e2-medium",
+  "machineType": "projects/neat-airport-400410/zones/europe-west1-b/machineTypes/e2-medium",
   "metadata": {
     "items": [
       {
@@ -48,7 +48,7 @@
         }
       ],
       "stackType": "IPV4_ONLY",
-      "subnetwork": "projects/neat-airport-400410/regions/us-west4/subnetworks/default"
+      "subnetwork": "projects/neat-airport-400410/regions/europe-west1-b/subnetworks/default"
     }
   ],
   "params": {
@@ -83,5 +83,6 @@
   "tags": {
     "items": []
   },
-  "zone": "projects/neat-airport-400410/zones/us-west4-b"
+  "zone": "projects/neat-airport-400410/zones/europe-west1-b"
+
 }
