@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 def get_api_key() -> str:
     # secret = os.environ.get("compute-api-key")
-    project_id = "fluted-visitor-405215"
+    project_id = "neat-airport-400410"
     secret_id = "compute-api-key"
     
     client = secretmanager_v1.SecretManagerServiceClient()
@@ -49,7 +49,7 @@ def addWorker(token, num):
       tdata=json.load(p)
     tdata['name']='slave'+str(num)
     data=json.dumps(tdata)
-    url='https://www.googleapis.com/compute/v1/projects/fluted-visitor-405215/zones/us-west4-b/instances'
+    url='https://www.googleapis.com/compute/v1/projects/neat-airport-400410/zones/us-west4-b/instances'
     headers={"Authorization": "Bearer "+token}
     resp=requests.post(url,headers=headers, data=data)
     if resp.status_code==200:     
