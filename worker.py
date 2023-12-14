@@ -1,10 +1,10 @@
 from flask import Flask
 from flask import request
 from flask import render_template
+from google.cloud import secretmanager
 import requests
 import os
 import json
-from google.cloud import secretmanager
 app = Flask(__name__)
 
 def access_secret_version(secret_id, version_id="latest"):
@@ -22,7 +22,7 @@ def access_secret_version(secret_id, version_id="latest"):
       
 @app.route("/")
 def hello():
-    return render_template('index.html')
+    return "Add workers to the Spark cluster with a POST request to add"
 
 @app.route("/test")
 def test():
@@ -32,7 +32,7 @@ def test():
 @app.route("/add",methods=['GET','POST'])
 def add():
   if request.method=='GET':
-    return "Use post to add" # replace with form template
+    return "Use post method"
   else:
     token=access_secret_version("compute-api-key")
     ret = addWorker(token,request.form['num'])
